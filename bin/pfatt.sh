@@ -65,6 +65,14 @@ echo -n "  removing waneapfilter:nomatch hook... "
 /usr/sbin/ngctl rmhook waneapfilter: nomatch
 echo "OK!"
 
+echo -n "setting $RG_IF MAC address to match RG ($RG_ETHER_ADDR)... "
+/sbin/ifconfig $RG_IF ether $RG_ETHER_ADDR
+echo "OK!"
+
+echo -n "setting $ONT_IF MAC address to match RG ($RG_ETHER_ADDR)... "
+/sbin/ifconfig $ONT_IF ether $RG_ETHER_ADDR
+echo "OK!"
+
 echo "enabling interfaces..."
 echo -n "  $RG_IF ... "
 /sbin/ifconfig $RG_IF up
@@ -74,12 +82,8 @@ echo -n "  $ONT_IF ... "
 /sbin/ifconfig $ONT_IF up
 echo "OK!"
 
-echo -n "enabling promiscuous mode on $RG_IF... "
-/sbin/ifconfig $RG_IF promisc
-echo "OK!"
-
-echo -n "enabling promiscuous mode on $ONT_IF... "
-/sbin/ifconfig $ONT_IF promisc
+echo -n "  ngeth0 ... "
+/sbin/ifconfig ngeth0 up
 echo "OK!"
 
 echo "ngeth0 should now be available to configure as your pfSense WAN"

@@ -220,10 +220,6 @@ If the VLAN0 traffic is being properly handled, next pfSense will need to reques
 
 If you don't see traffic being bridged between `ngeth0` and `$ONT_IF`, then netgraph is not setup correctly. 
 
-## Promiscuous Mode
-
-`pfatt.sh` will put `$RG_IF` in promiscuous mode via `/sbin/ifconfig $RG_IF promisc`. Otherwise, the EAP packets would not bridge. I think this is necessary for everyone but I'm not sure. Turn it off if it's casuing issues. 
-
 ## netgraph
 
 The netgraph system provides a uniform and modular system for the implementation of kernel objects which perform various networking functions. If you're unfamilar with netgraph, this [tutorial](http://www.netbsd.org/gallery/presentations/ast/2012_AsiaBSDCon/Tutorial_NETGRAPH.pdf) is a great introduction. 
